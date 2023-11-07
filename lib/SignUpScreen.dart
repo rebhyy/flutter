@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  final String imagePath;
 
+  SignUpScreen({Key? key, required this.imagePath}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -16,6 +23,9 @@ class SignUpScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.all(16.0),
           children: <Widget>[
+            Image.asset(widget.imagePath),
+            SizedBox(height: 12),
+
             TextFormField(
               decoration: InputDecoration(labelText: 'Username'),
               validator: (value) {
@@ -56,7 +66,10 @@ class SignUpScreen extends StatelessWidget {
               },
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Billing Address'),
+              maxLines: 4,
+              decoration: InputDecoration(
+                labelText: 'Billing Address',
+              ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your billing address';
@@ -64,23 +77,29 @@ class SignUpScreen extends StatelessWidget {
                 return null;
               },
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Process data.
-                  }
-                },
-                child: Text('S\'inscrire'),
-              ),
-            ),
-            // Add a cancel button
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Go back to previous screen
-              },
-              child: Text('Annuler'),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {}
+                    },
+                    child: Text('S\'inscrire'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Annuler'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

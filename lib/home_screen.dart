@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:myapp/cell.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,48 +6,58 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> items = [
+      {
+        'image': 'dmc5.jpg',
+        'title': 'Devil May Cry 5',
+        'description':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor et ipsum elementum luctus in id nunc. In fringilla neque ut pharetra iaculis. Nunc at nisl eget arcu dignissim lobortis. Cras dignissim tortor nec tellus cursus sodales. Cras feugiat, nunc eu venenatis commodo, nisl purus lacinia ipsum, sit amet varius lorem magna ac neque. Duis libero mi, dictum vitae mollis quis, elementum nec ante. Nam venenatis nulla nec augue porta, sed fermentum ante venenatis. Praesent lacus mauris, gravida in feugiat ac, tempor vel eros. Quisque pellentesque, augue eget viverra faucibus, odio lacus interdum erat, nec feugiat est felis ac odio. Duis fringilla id metus eget sagittis.',
+        'price': 200.00,
+      },
+      {
+        'image': 'fifa.jpg',
+        'title': 'FIFA 22',
+        'description':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor et ipsum elementum luctus in id nunc. In fringilla neque ut pharetra iaculis. Nunc at nisl eget arcu dignissim lobortis. Cras dignissim tortor nec tellus cursus sodales. Cras feugiat, nunc eu venenatis commodo, nisl purus lacinia ipsum, sit amet varius lorem magna ac neque. Duis libero mi, dictum vitae mollis quis, elementum nec ante. Nam venenatis nulla nec augue porta, sed fermentum ante venenatis. Praesent lacus mauris, gravida in feugiat ac, tempor vel eros. Quisque pellentesque, augue eget viverra faucibus, odio lacus interdum erat, nec feugiat est felis ac odio. Duis fringilla id metus eget sagittis.',
+        'price': 220.00,
+      },
+      {
+        'image': 'minecraft.jpg',
+        'title': 'Minecraft',
+        'description':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor et ipsum elementum luctus in id nunc. In fringilla neque ut pharetra iaculis. Nunc at nisl eget arcu dignissim lobortis. Cras dignissim tortor nec tellus cursus sodales. Cras feugiat, nunc eu venenatis commodo, nisl purus lacinia ipsum, sit amet varius lorem magna ac neque. Duis libero mi, dictum vitae mollis quis, elementum nec ante. Nam venenatis nulla nec augue porta, sed fermentum ante venenatis. Praesent lacus mauris, gravida in feugiat ac, tempor vel eros. Quisque pellentesque, augue eget viverra faucibus, odio lacus interdum erat, nec feugiat est felis ac odio. Duis fringilla id metus eget sagittis.',
+        'price': 150.00,
+      },
+      {
+        'image': 'nfs.jpg',
+        'title': 'Need For Speed',
+        'description':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor et ipsum elementum luctus in id nunc. In fringilla neque ut pharetra iaculis. Nunc at nisl eget arcu dignissim lobortis. Cras dignissim tortor nec tellus cursus sodales. Cras feugiat, nunc eu venenatis commodo, nisl purus lacinia ipsum, sit amet varius lorem magna ac neque. Duis libero mi, dictum vitae mollis quis, elementum nec ante. Nam venenatis nulla nec augue porta, sed fermentum ante venenatis. Praesent lacus mauris, gravida in feugiat ac, tempor vel eros. Quisque pellentesque, augue eget viverra faucibus, odio lacus interdum erat, nec feugiat est felis ac odio. Duis fringilla id metus eget sagittis.',
+        'price': 100.00,
+      },
+      {
+        'image': 'rdr2.jpg',
+        'title': 'Red Dead Redemption 2',
+        'description':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor et ipsum elementum luctus in id nunc. In fringilla neque ut pharetra iaculis. Nunc at nisl eget arcu dignissim lobortis. Cras dignissim tortor nec tellus cursus sodales. Cras feugiat, nunc eu venenatis commodo, nisl purus lacinia ipsum, sit amet varius lorem magna ac neque. Duis libero mi, dictum vitae mollis quis, elementum nec ante. Nam venenatis nulla nec augue porta, sed fermentum ante venenatis. Praesent lacus mauris, gravida in feugiat ac, tempor vel eros. Quisque pellentesque, augue eget viverra faucibus, odio lacus interdum erat, nec feugiat est felis ac odio. Duis fringilla id metus eget sagittis.',
+        'price': 150.00,
+      },
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("G-Store Esprit"),
       ),
-      body: Column(
-        children: const [
-          Cell(
-            image: "dmc5.jpg",
-            title: "Devil May Cry 5",
-            description:
-                "Action-adventure game featuring fast-paced combat with a rich story.",
-            price: 200,
-          ),
-          Cell(
-            image: "fifa.jpg",
-            title: "FIFA 22",
-            description:
-                "Latest installment in the FIFA series with enhanced gameplay and graphics.",
-            price: 220,
-          ),
-          Cell(
-            image: "minecraft.jpg",
-            title: "Minecraft",
-            description:
-                "Sandbox game that allows players to build and explore their own worlds.",
-            price: 150,
-          ),
-          Cell(
-            image: "nfs.jpg",
-            title: "Need For Speed",
-            description:
-                "Racing game series known for its high-speed pursuits and customizations.",
-            price: 100,
-          ),
-          Cell(
-            image: "rdr2.jpg",
-            title: "Red Dead Redemption 2",
-            description:
-                "Open-world game set in the late 1800s with deep storytelling and environment.",
-            price: 150,
-          ),
-        ],
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Cell(
+            image: items[index]['image'],
+            title: items[index]['title'],
+            description: items[index]['description'],
+            price: items[index]['price'],
+          );
+        },
       ),
     );
   }

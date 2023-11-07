@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/DetailScreen.dart'; // Import the detail page
+import 'package:myapp/DetailScreen.dart';
 
 class Cell extends StatelessWidget {
   final String image;
   final String title;
   final double price;
-  final String description; // Assuming there's a description to pass
+  final String description;
 
   const Cell({
     super.key,
     required this.image,
     required this.title,
     required this.price,
-    required this.description, // Make sure to pass this parameter when creating Cell
+    required this.description,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Push the DetailScreen onto the navigation stack
         Navigator.push(
           context,
           MaterialPageRoute(
